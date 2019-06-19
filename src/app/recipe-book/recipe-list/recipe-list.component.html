@@ -3,19 +3,15 @@
     <button class="btn btn-success">New recipe</button>
   </div>
 </div>
+<hr>
 <div class="row">
   <div class="col">
     <div class="list-group">
-      <a href="#" class="list-group-item">
-        <div class="float-left">
-          <h4 class="mb-1">Recipe name</h4>
-          <p>Description</p>
-        </div>
-        <span class="float-right">
-          <img src="" alt="" class="img-responsive">
-        </span>
-      </a>
+      <app-recipe-item
+        *ngFor="let recipe of recipes"
+        [recipe]="recipe"
+        >
+      </app-recipe-item>
     </div>
-    <app-recipe-item></app-recipe-item>
   </div>
 </div>
