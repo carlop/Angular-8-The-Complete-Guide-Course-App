@@ -9,8 +9,7 @@
     <div class="list-group">
       <app-recipe-item
         *ngFor="let recipe of recipes"
-        [recipe]="recipe"
-        (recipeSelected)="onRecipeSelected(recipe)">
+        [recipe]="recipe">
       </app-recipe-item>
     </div>
   </div>
