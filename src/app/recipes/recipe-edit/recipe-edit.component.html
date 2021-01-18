@@ -19,8 +19,8 @@
         <div class="col">
           <div class="form-group">
             <label for="imagePath">Image URL</label>
-            <input type="text" id="imagePath" class="form-control" formControlName="imagePath">
-            <img src="" class="img-responsive" alt="Preview image">
+            <input type="text" id="imagePath" class="form-control" formControlName="imagePath" #imagePath>
+            <img [src]="imagePath.value" class="img-thumbnail" alt="Preview image">
           </div>
         </div>
       </div>
