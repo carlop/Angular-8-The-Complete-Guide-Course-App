@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
-import { Subject, throwError } from 'rxjs';
+import { BehaviorSubject, throwError } from 'rxjs';
 import { User } from './user.model';
 
 export interface AuthResponseData {
@@ -19,7 +19,7 @@ export class AuthService {
   // No problem with showing API_KEY: https://stackoverflow.com/a/37484053
   API_KEY = 'AIzaSyDwXF-KLPZ0Nk7TAliH5TBxDEScTafIGGg';
 
-  user = new Subject<User>();
+  user = new BehaviorSubject<User>(null);
 
   constructor(private http: HttpClient) {
   }
