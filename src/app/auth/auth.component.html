@@ -5,7 +5,7 @@
       <p class="mb-0">{{ error }}</p>
     </div>
 -->
-    <app-alert [message]="error" *ngIf="error"></app-alert>
+    <app-alert [message]="error" *ngIf="error" (close)="onHandleError()"></app-alert>
 <!--
     Please don't include css in you html code
 -->
