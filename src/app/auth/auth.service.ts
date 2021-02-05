@@ -4,6 +4,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { User } from './user.model';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 export interface AuthResponseData {
   kind: string;
@@ -17,9 +18,6 @@ export interface AuthResponseData {
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-  // No problem with showing API_KEY: https://stackoverflow.com/a/37484053
-  API_KEY = 'AIzaSyDwXF-KLPZ0Nk7TAliH5TBxDEScTafIGGg';
-
   user = new BehaviorSubject<User>(null);
   private tokenExpirationTimer: any;
 
@@ -29,7 +27,7 @@ export class AuthService {
 
   signup(email: string, password: string) {
     return this.http
-      .post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + this.API_KEY,
+      .post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + environment.api_key,
         {
           email: email,
           password: password,
@@ -52,7 +50,7 @@ export class AuthService {
   login(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + this.API_KEY,
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + environment.api_key,
         {
           email: email,
           password: password,
@@ -67,11 +65,11 @@ export class AuthService {
               responseData.localId,
               responseData.idToken,
               +responseData.expiresIn
-              );
-            }
-          )
-        );
-    }
+            );
+          }
+        )
+      );
+  }
 
     autoLogin() {
       const userData: {

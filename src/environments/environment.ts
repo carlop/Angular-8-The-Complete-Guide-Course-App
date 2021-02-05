@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // No problem with showing API_KEY: https://stackoverflow.com/a/37484053
+  api_key: 'AIzaSyDwXF-KLPZ0Nk7TAliH5TBxDEScTafIGGg',
 };
 
 /*
